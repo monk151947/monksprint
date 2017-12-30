@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Include Required Prerequisites -->
+<script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css" />
+
+<!-- Include Date Range Picker -->
+<script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+</head>
+<body>
+
+<div class="container">
+  <h1>Welcome! Order status</h1>
+
+
+<form accept-charset="UTF-8" action="/report" class="report" method="post">
+  <div class="form-group">
+    <label for="From">Date Range</label>
+    <input class="form-control" name="date" type="text">
+  </div>
+  <input class="btn btn-success" name="search" type="submit" value="search">
+</form>
+  <script type="text/javascript">
+  $('input[name="date"]').daterangepicker(
+    {
+        locale: {
+          format: 'YYYY-MM-DD'
+        }
+    },
+    function(start, end, label) {
+        alert("A new date range was chosen: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+    });
+  </script>
+</div>
+
+</body>
+</html>
