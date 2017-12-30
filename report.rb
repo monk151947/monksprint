@@ -13,7 +13,7 @@ end
 post '/report' do
   date = params[:date].split() if params[:date]
   config = YAML.load_file("config.yml")
-  min_date = date[0] 
+  min_date = date[0]
   max_date = date[2]
 
   content_type :json
@@ -32,13 +32,12 @@ post '/report' do
 
     response = response.body
     response = JSON.parse(response)
-    puts response["orders"]
-    unless response["orders"] =0
+    
+    unless response["orders"].empty?
        total = 0
        response["orders"].each do |res|
           total += res["total_price"].to_i
        end
-       p total
       return { "total": total, "profit":  total * 0.20 }.to_json
    else
       return { "Result": "Results not found for the date range selected" }.to_json
